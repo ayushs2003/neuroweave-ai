@@ -14,7 +14,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white" alt="React 18" />
   <img src="https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white" alt="Vite 6" />
-  <img src="https://img.shields.io/badge/JavaScript-ES2024-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Gemini-2.5%20Flash-4285F4?logo=google&logoColor=white" alt="Gemini 2.5" />
+  <img src="https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License" />
 </p>
 
@@ -37,40 +39,52 @@ Technical learning and developer onboarding are **inefficient and time-consuming
 
 **NeuroWeave AI** is a cognitive learning co-pilot that:
 
-- 🧠 **Explains complex systems instantly** via NLP-powered AI chat
+- 🧠 **Explains complex systems instantly** via Gemini AI-powered chat
 - 🕸️ **Converts codebases into interactive maps** using knowledge graph visualization
 - 🎯 **Predicts user knowledge gaps** through cognitive state modeling
 - 🛤️ **Generates adaptive learning paths** personalized to each developer
+- 📂 **Analyzes entire projects** — upload a folder for full AI architecture review
 
 ---
 
 ## ✨ Features
 
-### 🤖 AI Chat with NLP Engine
-Natural language interface for querying any programming concept. Supports intent detection for React, APIs, Docker, Auth, Databases, and more — with rich markdown responses, code blocks, and latency metrics.
+### 🤖 AI Chat (Gemini 2.5 Flash)
+Natural language interface powered by **Google Gemini 2.5 Flash**. Ask anything about programming — React, APIs, Docker, Auth, Databases — and get rich markdown responses with code examples, explanations, and related topic suggestions.
 
-![AI Chat](docs/screenshots/ai_chat.png)
+- Real-time Gemini AI responses with latency tracking
+- Intelligent fallback when API is unavailable
+- Retry logic with exponential backoff for rate limits
 
 ---
 
 ### 🕸️ Interactive Knowledge Graph
 Force-directed 2D graph mapping **30+ tech concepts** with relationships and mastery indicators. Nodes are color-coded by category with hover tooltips showing descriptions and skill progress.
 
-![Knowledge Graph](docs/screenshots/knowledge_graph.png)
-
 ---
 
-### 💻 Code Explorer with AI Insights
-IDE-like code viewer with file tree navigation, syntax-highlighted source code, and **AI-powered annotations** that identify patterns, suggest improvements, and flag potential issues.
+### 💻 Code Explorer (3 Modes)
 
-![Code Explorer](docs/screenshots/code_explorer.png)
+The Code Explorer has **three analysis modes**:
+
+| Mode | Description |
+|------|-------------|
+| **📁 Samples** | Browse pre-loaded sample files with AI annotations and pattern detection |
+| **📋 Your Code** | Paste any code snippet, pick from 20 languages, get AI-powered analysis |
+| **📂 Your Project** | Upload an entire project folder for full architecture analysis |
+
+#### Project Analyzer
+- Upload any project folder from your computer
+- Browser reads files locally (skips `node_modules`, `.git`, binaries)
+- **Gemini AI analyzes** the full project: tech stack, architecture, patterns, issues
+- Browse any file in the uploaded project with syntax highlighting
+- **Ask AI questions** about specific files in the context of your project
+- "Analyze File" button for per-file Gemini review
 
 ---
 
 ### 🛤️ Adaptive Learning Path
 AI-generated curriculum based on your knowledge gaps. Each topic includes difficulty badges, estimated completion time, category tags, and real-time mastery progress bars.
-
-![Learning Path](docs/screenshots/learning_path.png)
 
 ---
 
@@ -90,7 +104,7 @@ Real-time dashboard showing response time, queries handled, active users, and sy
 ```
 ┌──────────────────────────────────────────────────┐
 │                   Frontend Layer                  │
-│              React + Vite + WebGL                 │
+│              React 18 + Vite 6                    │
 ├──────────────┬──────────────┬─────────────────────┤
 │   Sidebar    │ Center Panel │   Skill Panel       │
 │  Navigation  │  AI Chat     │  Knowledge Score    │
@@ -98,17 +112,14 @@ Real-time dashboard showing response time, queries handled, active users, and sy
 │  History     │  Code View   │  Weak Areas         │
 │              │  Learn Path  │  Suggestions        │
 ├──────────────┴──────────────┴─────────────────────┤
-│               AI Orchestration Layer              │
+│               Backend (Express.js)                │
 ├───────────┬────────────┬──────────┬───────────────┤
-│ NLP Engine│ Reasoning  │ Graph    │ User Model    │
-│ (Intent   │ Engine     │ Engine   │ Engine        │
-│ Detection)│ (RAG +     │ (Neo4j   │ (Cognitive    │
-│           │ Transformer│ Based)   │  State)       │
+│  Gemini   │  Code      │Knowledge │  Progress     │
+│  AI Chat  │  Analysis  │  Graph   │  Tracking     │
+│  Engine   │  Engine    │  Engine  │  Engine       │
 ├───────────┴────────────┴──────────┴───────────────┤
-│              Database Layer                       │
-│     Vector DB │ Knowledge Graph │ User State DB   │
-├───────────────────────────────────────────────────┤
-│           Cloud Infrastructure (K8s)              │
+│              Database Layer (SQLite)               │
+│     Knowledge Data │ User Progress │ Skill State  │
 └───────────────────────────────────────────────────┘
 ```
 
@@ -118,21 +129,23 @@ Real-time dashboard showing response time, queries handled, active users, and sy
 
 | Layer | Technology |
 |-------|-----------|
-| **Framework** | React 18 + Vite 6 |
+| **Frontend** | React 18 + Vite 6 |
+| **Backend** | Node.js + Express.js |
+| **AI Engine** | Google Gemini 2.5 Flash |
+| **Database** | SQLite 3 (better-sqlite3) |
 | **Graph Visualization** | react-force-graph-2d |
 | **Code Highlighting** | react-syntax-highlighter (Prism) |
-| **Animations** | Framer Motion |
 | **Icons** | Lucide React |
 | **Styling** | Vanilla CSS (Dark Theme + Glassmorphism) |
-| **AI Simulation** | Custom NLP engine with intent detection |
 
 ---
 
 ## 📦 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - npm 9+
+- Google Gemini API Key ([Get one free](https://aistudio.google.com/apikey))
 
 ### Installation
 
@@ -144,11 +157,25 @@ cd neuroweave-ai
 # Install dependencies
 npm install
 
-# Start development server
+# Set up environment variables
+cp .env.example .env
+# Edit .env and add your GEMINI_API_KEY
+```
+
+### Running the App
+
+```bash
+# Terminal 1 — Start the backend server
+node server/index.js
+
+# Terminal 2 — Start the frontend dev server
 npm run dev
 ```
 
-The app will be available at **http://localhost:5173/**
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:3001
+
+> 💡 The app works without a Gemini API key using intelligent fallback responses. Add your key for full AI-powered features.
 
 ### Build for Production
 
@@ -159,28 +186,60 @@ npm run preview
 
 ---
 
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/chat` | AI-powered chat (Gemini) |
+| `POST` | `/api/code/analyze` | Analyze code snippets |
+| `POST` | `/api/code/explain` | Explain code line-by-line |
+| `POST` | `/api/code/project-analyze` | Analyze entire project structure |
+| `POST` | `/api/code/project-file-help` | Contextual help for a file within a project |
+| `GET` | `/api/knowledge/graph` | Get knowledge graph data |
+| `GET` | `/api/progress/:userId` | Get user progress & skills |
+| `GET` | `/api/health` | Health check |
+
+---
+
 ## 📁 Project Structure
 
 ```
 neuroweave-ai/
-├── src/
+├── src/                          # Frontend
 │   ├── ai/
-│   │   ├── engine.js          # AI simulation (intent detection, responses)
-│   │   ├── knowledgeData.js   # Knowledge graph data (30 concepts)
-│   │   └── codeData.js        # Sample codebase data & AI annotations
+│   │   ├── engine.js             # Client-side AI simulation
+│   │   ├── knowledgeData.js      # Knowledge graph data (30 concepts)
+│   │   └── codeData.js           # Sample codebase & AI annotations
+│   ├── api/
+│   │   └── client.js             # API client (chat, code, project)
 │   ├── components/
-│   │   ├── AIChat.jsx         # Chat interface with NLP
-│   │   ├── KnowledgeGraph.jsx # Force-directed graph visualization
-│   │   ├── CodeViewer.jsx     # Code explorer with AI insights
-│   │   ├── LearningPath.jsx   # Adaptive learning curriculum
-│   │   ├── SkillPanel.jsx     # Knowledge score & skill tracking
-│   │   ├── MetricsBar.jsx     # Live system metrics
-│   │   └── Sidebar.jsx        # Navigation sidebar
-│   ├── App.jsx                # Root layout component
-│   ├── main.jsx               # Entry point
-│   └── index.css              # Design system & global styles
-├── index.html
-├── vite.config.js
+│   │   ├── AIChat.jsx            # Chat interface with Gemini
+│   │   ├── KnowledgeGraph.jsx    # Force-directed graph
+│   │   ├── CodeViewer.jsx        # Code Explorer (3 modes)
+│   │   ├── LearningPath.jsx      # Adaptive learning curriculum
+│   │   ├── SkillPanel.jsx        # Knowledge score & skills
+│   │   ├── MetricsBar.jsx        # Live system metrics
+│   │   └── Sidebar.jsx           # Navigation sidebar
+│   ├── App.jsx                   # Root layout
+│   ├── main.jsx                  # Entry point
+│   └── index.css                 # Design system & styles
+├── server/                       # Backend
+│   ├── ai/
+│   │   ├── gemini.js             # Gemini AI client (chat, analyze, project)
+│   │   ├── prompts.js            # AI prompt templates
+│   │   └── knowledgeEngine.js    # Knowledge processing
+│   ├── routes/
+│   │   ├── chat.js               # Chat API routes
+│   │   ├── code.js               # Code analysis routes
+│   │   ├── knowledge.js          # Knowledge graph routes
+│   │   └── progress.js           # User progress routes
+│   ├── db/
+│   │   ├── database.js           # SQLite database layer
+│   │   └── seed.js               # Seed data
+│   ├── data/                     # Static data files
+│   └── index.js                  # Express server entry
+├── .env.example                  # Environment template
+├── vite.config.js                # Vite config with API proxy
 ├── package.json
 └── README.md
 ```
@@ -202,11 +261,10 @@ neuroweave-ai/
 
 ## 🏆 Competitive Differentiation
 
-Unlike traditional chatbots or LMS platforms, NeuroWeave provides:
-
 | Feature | ChatGPT | LMS Platforms | NeuroWeave AI |
 |---------|---------|---------------|---------------|
 | Full codebase understanding | ❌ | ❌ | ✅ |
+| Project folder analysis | ❌ | ❌ | ✅ |
 | Real-time skill graph | ❌ | Partial | ✅ |
 | Cognitive state modeling | ❌ | ❌ | ✅ |
 | Adaptive AI curriculum | ❌ | Basic | ✅ |
@@ -224,37 +282,26 @@ Unlike traditional chatbots or LMS platforms, NeuroWeave provides:
 
 ---
 
-## 📊 Business Projections
+## 🗺️ Roadmap
 
-| Metric | Value |
-|--------|-------|
-| Total build cost | $530K |
-| Break-even period | 11 months |
-| Year 3 revenue target | $6.1M |
-| 3-year ROI | **1,051%** |
-| User retention target | **87%+** |
+- [x] **Phase 1** — Core prototype with simulated AI
+- [x] **Phase 2** — Gemini 2.5 Flash backend integration
+- [x] **Phase 2.5** — Project folder analysis feature
+- [ ] **Phase 3** — Real-time codebase parsing via LSP
+- [ ] **Phase 4** — Neo4j knowledge graph backend
+- [ ] **Phase 5** — Enterprise SSO & team analytics
+- [ ] **Phase 6** — Voice input & multi-language support
 
 ---
 
 ## 🔒 Security & Compliance
 
+- 🔐 API keys stored server-side only (`.env`)
+- 🚫 No uploaded files are stored — analysis only
 - 🔐 End-to-end encryption
 - 👥 Role-based access control (RBAC)
-- 📋 Audit logging
 - ✅ SOC 2 Type II compliant
 - 🇪🇺 GDPR compliant
-- 🏅 ISO 27001 certified
-
----
-
-## 🗺️ Roadmap
-
-- [x] **Phase 1** — Core prototype with simulated AI
-- [ ] **Phase 2** — Integration with real LLM backends (GPT-4 / Gemini)
-- [ ] **Phase 3** — Real-time codebase parsing via LSP
-- [ ] **Phase 4** — Neo4j knowledge graph backend
-- [ ] **Phase 5** — Enterprise SSO & team analytics
-- [ ] **Phase 6** — Voice input & multi-language support
 
 ---
 
