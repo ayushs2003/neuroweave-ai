@@ -40,10 +40,12 @@ Technical learning and developer onboarding are **inefficient and time-consuming
 **NeuroWeave AI** is a cognitive learning co-pilot that:
 
 - 🧠 **Explains complex systems instantly** via Gemini AI-powered chat
-- 🕸️ **Converts codebases into interactive maps** using knowledge graph visualization
+- 🕸️ **Visualizes file dependencies** with interactive sequence diagrams
+- 🔍 **Reviews entire codebases** using PR-style AI code review
+- 📝 **Auto-generates README docs** from uploaded project files
+- 🐛 **Debugs errors instantly** — paste any stack trace for AI-powered explanations
 - 🎯 **Predicts user knowledge gaps** through cognitive state modeling
 - 🛤️ **Generates adaptive learning paths** personalized to each developer
-- 📂 **Analyzes entire projects** — upload a folder for full AI architecture review
 
 ---
 
@@ -56,50 +58,78 @@ Natural language interface powered by **Google Gemini 2.5 Flash**. Ask anything 
 - Intelligent fallback when API is unavailable
 - Retry logic with exponential backoff for rate limits
 
-![AI Chat](docs/screenshots/ai_chat.png)
+![AI Chat](screenshots/ai_chat.png)
 
 ---
 
-### 🕸️ Interactive Knowledge Graph
-Force-directed 2D graph mapping **30+ tech concepts** with relationships and mastery indicators. Nodes are color-coded by category with hover tooltips showing descriptions and skill progress.
+### 💻 Code Explorer (4 Modes)
 
-![Knowledge Graph](docs/screenshots/knowledge_graph.png)
-
----
-
-### 💻 Code Explorer (3 Modes)
-
-The Code Explorer has **three analysis modes**:
+The Code Explorer has **four powerful modes**:
 
 | Mode | Description |
 |------|-------------|
 | **📁 Samples** | Browse pre-loaded sample files with AI annotations and pattern detection |
-| **📋 Your Code** | Paste any code snippet, pick from 20 languages, get AI-powered analysis |
-| **📂 Your Project** | Upload an entire project folder for full architecture analysis |
+| **📋 Code** | Paste any code snippet, pick from 20 languages, get AI-powered analysis |
+| **📂 Project** | Upload an entire project folder for full architecture analysis |
+| **🐛 Debug** | Paste any error/stack trace and get AI-powered debugging assistance |
 
-![Code Explorer — Samples](docs/screenshots/code_explorer.png)
+![Code Explorer](screenshots/code_explorer.png)
 
-#### Paste Your Code
-Paste any code snippet, select from 20 supported languages, and get instant AI analysis.
+---
 
-![Code Explorer — Custom Code](docs/screenshots/code_explorer_custom.png)
+### 📂 Codebase Intelligence (Project Mode)
 
-#### Project Analyzer
-- Upload any project folder from your computer
-- Browser reads files locally (skips `node_modules`, `.git`, binaries)
-- **Gemini AI analyzes** the full project: tech stack, architecture, patterns, issues
-- Browse any file in the uploaded project with syntax highlighting
-- **Ask AI questions** about specific files in the context of your project
-- "Analyze File" button for per-file Gemini review
+Upload any project folder and unlock **4 sub-tabs** of AI-powered analysis:
 
-![Code Explorer — Project Upload](docs/screenshots/code_explorer_project.png)
+#### 📊 Overview
+Full project architecture analysis by Gemini AI — tech stack detection, file structure breakdown, design patterns, and improvement suggestions.
+
+#### 🕸️ Dependency Graph
+Client-side import parser that builds a visual **sequence diagram** showing file dependencies. Supports both **JavaScript/TypeScript** (`import`/`require`) and **Python** (`import`/`from ... import`) projects.
+
+- Automatic parsing on upload
+- Interactive file cards with imports & "used by" relationships
+- Statistics header (files, connections, entry points, leaf modules)
+- Color-coded icons by file type
+
+![Dependencies View](screenshots/dependencies.png)
+
+#### 🔍 PR-Style Code Review
+AI-powered code review that analyzes your entire project like a senior engineer reviewing a pull request:
+
+- **Code Quality Score** (0-100)
+- Categorized issues: 🐛 Bugs, ⚠️ Warnings, 💡 Suggestions, 🛡️ Security
+- Severity levels (Critical → Low)
+- File & line number references with fix suggestions
+- Click any issue to navigate to the file
+
+#### 📝 Auto README Generator
+One-click professional README generation from your uploaded project:
+
+- Infers project purpose from code
+- Detects tech stack from imports & package files
+- Generates: Overview, Features, Tech Stack, Project Structure, Getting Started, API Docs
+- **Copy to clipboard** and **Regenerate** buttons
+
+---
+
+### 🐛 Error Explainer (Debug Mode)
+
+Paste any error message or stack trace and get an instant AI-powered explanation:
+
+- **Root cause analysis** — what went wrong and why
+- **Step-by-step fix** — actionable instructions with code examples
+- **Related concepts** — underlying topics to understand
+- **Language selector** — JavaScript, Python, TypeScript, React, Java, C++, Rust, Go, Docker, Git, or Auto-detect
+
+![Error Explainer](screenshots/error_explainer.png)
 
 ---
 
 ### 🛤️ Adaptive Learning Path
 AI-generated curriculum based on your knowledge gaps. Each topic includes difficulty badges, estimated completion time, category tags, and real-time mastery progress bars.
 
-![Learning Path](docs/screenshots/learning_path.png)
+![Learning Path](screenshots/learning_path.png)
 
 ---
 
@@ -123,14 +153,14 @@ Real-time dashboard showing response time, queries handled, active users, and sy
 ├──────────────┬──────────────┬─────────────────────┤
 │   Sidebar    │ Center Panel │   Skill Panel       │
 │  Navigation  │  AI Chat     │  Knowledge Score    │
-│  Quick Topics│  Graph View  │  Skill Breakdown    │
-│  History     │  Code View   │  Weak Areas         │
+│  Quick Topics│  Code View   │  Skill Breakdown    │
+│  History     │  Graph View  │  Weak Areas         │
 │              │  Learn Path  │  Suggestions        │
 ├──────────────┴──────────────┴─────────────────────┤
 │               Backend (Express.js)                │
 ├───────────┬────────────┬──────────┬───────────────┤
-│  Gemini   │  Code      │Knowledge │  Progress     │
-│  AI Chat  │  Analysis  │  Graph   │  Tracking     │
+│  Gemini   │  Code      │ Codebase │  Progress     │
+│  AI Chat  │  Analysis  │  Intel   │  Tracking     │
 │  Engine   │  Engine    │  Engine  │  Engine       │
 ├───────────┴────────────┴──────────┴───────────────┤
 │              Database Layer (SQLite)               │
@@ -148,7 +178,6 @@ Real-time dashboard showing response time, queries handled, active users, and sy
 | **Backend** | Node.js + Express.js |
 | **AI Engine** | Google Gemini 2.5 Flash |
 | **Database** | SQLite 3 (better-sqlite3) |
-| **Graph Visualization** | react-force-graph-2d |
 | **Code Highlighting** | react-syntax-highlighter (Prism) |
 | **Icons** | Lucide React |
 | **Styling** | Vanilla CSS (Dark Theme + Glassmorphism) |
@@ -210,9 +239,12 @@ npm run preview
 | `POST` | `/api/code/explain` | Explain code line-by-line |
 | `POST` | `/api/code/project-analyze` | Analyze entire project structure |
 | `POST` | `/api/code/project-file-help` | Contextual help for a file within a project |
-| `GET` | `/api/knowledge/graph` | Get knowledge graph data |
-| `GET` | `/api/progress/:userId` | Get user progress & skills |
-| `GET` | `/api/health` | Health check |
+| `POST` | `/api/code/project-review` | PR-style AI code review |
+| `POST` | `/api/code/generate-readme` | Auto-generate README from project |
+| `POST` | `/api/code/explain-error` | AI error/stack trace explainer |
+| `GET`  | `/api/knowledge/graph` | Get knowledge graph data |
+| `GET`  | `/api/progress/:userId` | Get user progress & skills |
+| `GET`  | `/api/health` | Health check |
 
 ---
 
@@ -226,11 +258,10 @@ neuroweave-ai/
 │   │   ├── knowledgeData.js      # Knowledge graph data (30 concepts)
 │   │   └── codeData.js           # Sample codebase & AI annotations
 │   ├── api/
-│   │   └── client.js             # API client (chat, code, project)
+│   │   └── client.js             # API client (chat, code, project, debug)
 │   ├── components/
 │   │   ├── AIChat.jsx            # Chat interface with Gemini
-│   │   ├── KnowledgeGraph.jsx    # Force-directed graph
-│   │   ├── CodeViewer.jsx        # Code Explorer (3 modes)
+│   │   ├── CodeViewer.jsx        # Code Explorer (4 modes + codebase intelligence)
 │   │   ├── LearningPath.jsx      # Adaptive learning curriculum
 │   │   ├── SkillPanel.jsx        # Knowledge score & skills
 │   │   ├── MetricsBar.jsx        # Live system metrics
@@ -240,12 +271,12 @@ neuroweave-ai/
 │   └── index.css                 # Design system & styles
 ├── server/                       # Backend
 │   ├── ai/
-│   │   ├── gemini.js             # Gemini AI client (chat, analyze, project)
-│   │   ├── prompts.js            # AI prompt templates
+│   │   ├── gemini.js             # Gemini AI (chat, analyze, review, readme, debug)
+│   │   ├── prompts.js            # AI prompt templates (7 prompts)
 │   │   └── knowledgeEngine.js    # Knowledge processing
 │   ├── routes/
 │   │   ├── chat.js               # Chat API routes
-│   │   ├── code.js               # Code analysis routes
+│   │   ├── code.js               # Code analysis + codebase intelligence routes
 │   │   ├── knowledge.js          # Knowledge graph routes
 │   │   └── progress.js           # User progress routes
 │   ├── db/
@@ -253,6 +284,7 @@ neuroweave-ai/
 │   │   └── seed.js               # Seed data
 │   ├── data/                     # Static data files
 │   └── index.js                  # Express server entry
+├── screenshots/                  # Feature screenshots
 ├── .env.example                  # Environment template
 ├── vite.config.js                # Vite config with API proxy
 ├── package.json
@@ -280,10 +312,13 @@ neuroweave-ai/
 |---------|---------|---------------|---------------|
 | Full codebase understanding | ❌ | ❌ | ✅ |
 | Project folder analysis | ❌ | ❌ | ✅ |
-| Real-time skill graph | ❌ | Partial | ✅ |
+| PR-style code review | ❌ | ❌ | ✅ |
+| Auto README generation | ❌ | ❌ | ✅ |
+| Error explainer / debugger | Partial | ❌ | ✅ |
+| Dependency visualization | ❌ | ❌ | ✅ |
+| Real-time skill tracking | ❌ | Partial | ✅ |
 | Cognitive state modeling | ❌ | ❌ | ✅ |
 | Adaptive AI curriculum | ❌ | Basic | ✅ |
-| Interactive knowledge maps | ❌ | ❌ | ✅ |
 
 ---
 
@@ -302,17 +337,19 @@ neuroweave-ai/
 - [x] **Phase 1** — Core prototype with simulated AI
 - [x] **Phase 2** — Gemini 2.5 Flash backend integration
 - [x] **Phase 2.5** — Project folder analysis feature
-- [ ] **Phase 3** — Real-time codebase parsing via LSP
-- [ ] **Phase 4** — Neo4j knowledge graph backend
-- [ ] **Phase 5** — Enterprise SSO & team analytics
-- [ ] **Phase 6** — Voice input & multi-language support
+- [x] **Phase 3** — Codebase Intelligence (dependency graph, code review, auto README)
+- [x] **Phase 3.5** — Developer Productivity Tools (Error Explainer, Debug mode)
+- [ ] **Phase 4** — Real-time codebase parsing via LSP
+- [ ] **Phase 5** — Neo4j knowledge graph backend
+- [ ] **Phase 6** — Enterprise SSO & team analytics
+- [ ] **Phase 7** — Voice input & multi-language support
 
 ---
 
 ## 🔒 Security & Compliance
 
 - 🔐 API keys stored server-side only (`.env`)
-- 🚫 No uploaded files are stored — analysis only
+- 🚫 No uploaded files are stored — analysis only (client-side)
 - 🔐 End-to-end encryption
 - 👥 Role-based access control (RBAC)
 - ✅ SOC 2 Type II compliant
