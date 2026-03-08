@@ -105,6 +105,8 @@ AI-powered code review that analyzes your entire project like a senior engineer 
 - File & line number references with fix suggestions
 - Click any issue to navigate to the file
 
+![Code Review](screenshots/code_review.png)
+
 #### 📝 Auto README Generator
 One-click professional README generation from your uploaded project:
 
